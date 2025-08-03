@@ -1,39 +1,49 @@
-<<<<<<< HEAD
-[spanish](https://github.com/SofiDevO/alurageek-API/tree/spanish)
 
-## Deploy JSON Server to Vercel
 
-A template for deploying [JSON Server](https://github.com/typicode/json-server) on [Vercel](https://vercel.com), allowing you to run a fake REST API online 🐣!
+# Alura Geek Fake API
 
-Demo from this repository: 
-https://alurageek-api.vercel.app/
-### How to use (resume)
+API REST simulada para el proyecto Alura Geek, ideal para pruebas y prototipos de e-commerce. Implementada con [JSON Server](https://github.com/typicode/json-server) y desplegada en [Vercel](https://vercel.com).
 
-1. Click "**Use this template**" or clone this repository.
-2. Update or use the default [`db.json`](./db.json) in the repository.
-3. Sign up or log in to [Vercel](https://vercel.com).
-4. From the Vercel dashboard, click "**+ New Project**" and then "**Import**" your repository.
-5. On the "**Configure Project**" screen, leave everything as default and click "**Deploy**".
-6. Wait until deployment is complete, and your custom JSON server will be ready to serve!
+![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)
 
-## Default `db.json`
+## 🚀 Demo
+
+[alurageek-api.vercel.app](https://alurageek-api.vercel.app/)
+
+## ✨ Características
+
+- API REST lista para usar, sin backend real
+- Endpoints para productos y categorías
+- CRUD completo
+- Despliegue automático en Vercel
+
+## ⚡ Inicio Rápido
+
+1. Haz click en "**Use this template**" o clona este repositorio
+2. Actualiza el archivo [`db.json`](./db.json) con tus datos
+3. Crea una cuenta o inicia sesión en [Vercel](https://vercel.com)
+4. En el dashboard de Vercel, haz click en "**+ New Project**" e "**Import**" tu repositorio
+5. En la pantalla "**Configure Project**", deja todo por defecto y haz click en "**Deploy**"
+6. Espera a que el despliegue se complete y ¡tu API estará lista para usar! 🎉
+
+## 📦 Estructura de `db.json`
 
 ```json
 {
  "product": [
         {
             "img": "https://www.claroshop.com/c/star-wars-day/img/categorias/TAZAS_CATEGORIAS_STAR_WARS.png",
-            "name": "Trooper mug",
+            "name": "Taza Trooper",
             "price": "$60.00",
-            "description": "Trooper helmet mug",
+            "description": "Taza con diseño de casco Trooper",
             "category": "starwars",
             "id": 1
         },
         {
             "img": "https://cdn1.coppel.com/images/catalog/mkp/1773/5000/17733590-1.jpg",
-            "name": "Vader Funko",
+            "name": "Funko Darth Vader",
             "price": "$60.00",
-            "description": "Collectible Funko of Darth Vader",
+            "description": "Figura coleccionable Funko de Darth Vader",
             "category": "starwars",
             "id": 2
         }
@@ -41,9 +51,9 @@ https://alurageek-api.vercel.app/
 }
 ```
 
-## Build It Yourself
+## Creación Paso a Paso
 
-If you'd like to create the project from scratch, I have a [YouTube video Tutorial (Spanish) that guides you through deploying your own fake API with db-json and Vercel.](https://www.youtube.com/channel/UC36_js-krsAHAEAWpEDhHtw) 
+
 
 ### Step 1
 
@@ -59,7 +69,7 @@ npm init -y
 This will generate a **package.json**. Now, what you need to do is change these lines:
 
 Change this line:
-``` 
+```
  "main": "index.js",
 ```
 
@@ -96,43 +106,43 @@ You'll see that both **cors** and ***json-server*** have been added to the packa
 ### Step 4
 
 Run the command:
+
 ```
 npm install json-server
 ```
 
 Add the ***.gitignore*** file and add ***node_modules***.
 
-### Step 5
+### Paso 5: Configuración del Servidor
 
-Create a ***db.json*** file and add your own data.
-
-Additionally, you'll need to add a new [Folder called ***api***](./api/)  and, inside it, this [**server.js**](./api/server.js) file:
+1. Crea una carpeta **api**
+2. Dentro de la carpeta api, crea el archivo **server.js**:
 
 ```javascript
-// See https://github.com/typicode/json-server#module
+// Configuración del servidor JSON Server
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
 
 server.use(middlewares)
-// Add this before server.use(router)
+// Configuración de rutas
 server.use(jsonServer.rewriter({
     '/api/*': '/$1',
     '/product/:resource/:id/show': '/:resource/:id'
 }))
 server.use(router)
 server.listen(3000, () => {
-    console.log('JSON Server is running')
+    console.log('JSON Server está funcionando')
 })
 
-// Export the Server API
+// Exportar el servidor
 module.exports = server
 ```
 
-### Step 6
+### Paso 6: Configuración de Vercel
 
-Create a new file named [***vercel.json***](./vercel.json)
+Crea el archivo **vercel.json** en la raíz del proyecto:
 
 ```json
 {
@@ -151,15 +161,43 @@ Create a new file named [***vercel.json***](./vercel.json)
 }
 ```
 
-# Don't forget to commit & push your changes 🐣
+## Notas Importantes
 
-Go to your Vercel account, connect a new project with your repository, and deploy it💙
+- No olvides hacer commit y push de tus cambios antes de desplegar
+- El primer despliegue puede tardar unos minutos en estar disponible ⏰
+- Si encuentras algún problema, revisa los logs en tu dashboard de Vercel
 
-## You must be patient
 
-It could take a couple of minutes to finally work. ⏰🥹
+## 📚 Endpoints Disponibles
 
-||||||| empty tree
-=======
-# Alura-geek-fake-api
->>>>>>> da6baa238ffe3601eb64e7438914642a5c155bc5
+| Método | Endpoint           | Descripción                      |
+|--------|--------------------|----------------------------------|
+| GET    | /product           | Lista todos los productos        |
+| GET    | /product/:id       | Obtiene un producto específico   |
+| POST   | /product           | Crea un nuevo producto           |
+| PUT    | /product/:id       | Actualiza un producto            |
+| DELETE | /product/:id       | Elimina un producto              |
+
+### Ejemplo de respuesta
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Taza Trooper",
+    "price": "$60.00",
+    "description": "Taza con diseño de casco Trooper",
+    "category": "starwars",
+    "img": "https://www.claroshop.com/c/star-wars-day/img/categorias/TAZAS_CATEGORIAS_STAR_WARS.png"
+  }
+]
+```
+
+
+## 🤝 Contribuir
+
+¡Las contribuciones son bienvenidas! Si encuentras un bug o tienes una sugerencia, por favor crea un issue o un pull request.
+
+## 📄 Licencia
+
+MIT
