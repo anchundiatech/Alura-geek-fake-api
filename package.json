@@ -4,7 +4,7 @@
   "description": "A simple JSON server example with CORS support",
   "main": "server.js",
   "scripts": {
-    "start": "node api/server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
