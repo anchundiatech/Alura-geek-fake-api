@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [spanish](https://github.com/SofiDevO/alurageek-API/tree/spanish)
 
 ## Deploy JSON Server to Vercel
@@ -158,3 +159,7 @@ Go to your Vercel account, connect a new project with your repository, and deplo
 
 It could take a couple of minutes to finally work. ⏰🥹
 
+||||||| empty tree
+=======
+# Alura-geek-fake-api
+>>>>>>> da6baa238ffe3601eb64e7438914642a5c155bc5
